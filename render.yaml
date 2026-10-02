@@ -1,4 +1,14 @@
 services:
   - type: static
-    name: salama-fabric
+    name: salama-fabric-updated
     publishPath: .
+    headers:
+      - path: /*.html
+        name: Cache-Control
+        value: no-cache, no-store, must-revalidate
+      - path: /
+        name: Cache-Control
+        value: no-cache, no-store, must-revalidate
+      - path: /sw.js
+        name: Cache-Control
+        value: no-cache, no-store, must-revalidate

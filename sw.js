@@ -3,7 +3,7 @@
  * Provides offline resilience, instant repeat visits, and asset caching
  */
 
-const CACHE_NAME = 'salama-cache-v1.0.4';
+const CACHE_NAME = 'salama-cache-v1.0.5';
 
 const STATIC_ASSETS = [
   './',
@@ -44,7 +44,7 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch Event: Stale-While-Revalidate for local files; Network-First for images & external requests
+// Fetch Event: Network-First for navigation; Stale-While-Revalidate for local assets; Network-First for external
 self.addEventListener('fetch', (event) => {
   const req = event.request;
 
@@ -52,6 +52,24 @@ self.addEventListener('fetch', (event) => {
   if (req.method !== 'GET') return;
 
   const url = new URL(req.url);
+
+  // If HTML page navigation: Network-First so updates show immediately
+  if (req.mode === 'navigate') {
+    event.respondWith(
+      fetch(req)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            const clone = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(req, clone));
+          }
+          return networkResponse;
+        })
+        .catch(() => {
+          return caches.match(req).then((cached) => cached || caches.match('./index.html'));
+        })
+    );
+    return;
+  }
 
   // If local static resource: Stale-While-Revalidate
   if (url.origin === self.location.origin) {
@@ -63,11 +81,6 @@ self.addEventListener('fetch', (event) => {
             caches.open(CACHE_NAME).then((cache) => cache.put(req, clone));
           }
           return networkResponse;
-        }).catch(() => {
-          // If offline and request is HTML navigation, fallback to index.html
-          if (req.mode === 'navigate') {
-            return caches.match('./index.html');
-          }
         });
 
         return cachedResponse || fetchPromise;

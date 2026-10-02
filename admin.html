@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Admin Dashboard &amp; Image Manager | SALAMA Fabrics &amp; Bedding</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .admin-wrapper {
+      background: #F4F6F9;
+      min-height: 100vh;
+      padding: 40px 20px 80px;
+    }
+
+    .admin-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .admin-header {
+      background: var(--navy);
+      color: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--shadow-md);
+    }
+
+    .admin-header h1 {
+      color: #FFFFFF;
+      font-size: 1.8rem;
+    }
+
+    .admin-header p {
+      color: #D0D6E2;
+      font-size: 0.92rem;
+      margin-top: 4px;
+    }
+
+    .admin-nav-tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .admin-tab-btn {
+      padding: 10px 22px;
+      border-radius: var(--radius-md);
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--navy);
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .admin-tab-btn.active,
+    .admin-tab-btn:hover {
+      background: var(--gold);
+      color: var(--navy-dark);
+      border-color: var(--gold);
+    }
+
+    .admin-panel-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+
+    .admin-section-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .admin-section-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    /* Forms */
+    .admin-form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-field label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(181, 138, 34, 0.15);
+    }
+
+    .img-preview-box {
+      width: 100%;
+      height: 140px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #FAF8F2;
+      border: 1px solid var(--border);
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .img-preview-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Product Admin Table */
+    .admin-table-wrapper {
+      overflow-x: auto;
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    .admin-table th,
+    .admin-table td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .admin-table th {
+      background: #FAF9F6;
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    .admin-table tr:hover {
+      background: #FCFAF6;
+    }
+
+    .thumb-small {
+      width: 50px;
+      height: 50px;
+      border-radius: 4px;
+      object-fit: cover;
+    }
+
+    .action-btn-sm {
+      padding: 6px 12px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+    }
+
+    .btn-edit { background: #3498DB; color: #FFF; }
+    .btn-delete { background: #E74C3C; color: #FFF; }
+    .btn-edit:hover { background: #2980B9; }
+    .btn-delete:hover { background: #C0392B; }
+
+    .toast-admin {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--navy);
+      color: #FFF;
+      padding: 14px 24px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      border-left: 4px solid var(--gold);
+      z-index: 9999;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="admin-wrapper">
+    <div class="admin-container">
+      
+      <!-- Top Admin Header -->
+      <header class="admin-header">
+        <div>
+          <h1>⚙️ SALAMA Admin &amp; Photo Manager</h1>
+          <p>Update hero landing slideshow photos, category banners, and product catalog details in real-time.</p>
+        </div>
+        <div style="display:flex; gap:12px;">
+          <a href="index.html" class="btn btn-gold" style="padding:10px 18px; font-size:0.85rem;">View Live Site ↗</a>
+          <a href="shop.html" class="btn btn-outline" style="padding:10px 18px; font-size:0.85rem; color:#FFF; border-color:#FFF;">Marketplace ↗</a>
+        </div>
+      </header>
+
+      <!-- Navigation Tabs -->
+      <div class="admin-nav-tabs">
+        <button type="button" class="admin-tab-btn active" onclick="switchAdminTab('hero-slides-tab')">📸 Hero Landing Slides</button>
+        <button type="button" class="admin-tab-btn" onclick="switchAdminTab('products-tab')">🛍️ Product Catalog &amp; Photos</button>
+        <button type="button" class="admin-tab-btn" onclick="switchAdminTab('add-product-tab')">➕ Add New Product</button>
+        <button type="button" class="admin-tab-btn" onclick="switchAdminTab('settings-tab')">🔄 Reset Defaults</button>
+      </div>
+
+      <!-- TAB 1: HERO LANDING SLIDESHOW MANAGER -->
+      <div id="hero-slides-tab" class="admin-tab-content">
+        <div class="admin-panel-card">
+          <h3 class="admin-section-title">Edit Landing Page Slideshow Images</h3>
+          <p class="admin-section-desc">Paste new image URLs below for the 4 full-screen hero slides. Changes persist automatically across the homepage.</p>
+          
+          <form id="hero-slides-form" onsubmit="saveHeroSlides(event)">
+            <div id="hero-slides-form-fields" style="display:flex; flex-direction:column; gap:24px;">
+              <!-- Dynamically populated -->
+            </div>
+
+            <div style="margin-top: 30px; display:flex; gap:14px;">
+              <button type="submit" class="btn btn-gold" style="padding:12px 28px;">💾 Save All Hero Slide Edits</button>
+              <button type="button" class="btn btn-outline" onclick="loadHeroSlidesForm()">Reset Form</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- TAB 2: PRODUCT CATALOG & PHOTO MANAGER -->
+      <div id="products-tab" class="admin-tab-content" style="display:none;">
+        <div class="admin-panel-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+            <div>
+              <h3 class="admin-section-title">Manage Product Photos &amp; Details</h3>
+              <p class="admin-section-desc">Edit product image URLs, titles, pricing, and discount badges live.</p>
+            </div>
+            <button type="button" class="btn btn-gold" onclick="switchAdminTab('add-product-tab')">➕ Add New Product</button>
+          </div>
+
+          <div class="admin-table-wrapper">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Photo</th>
+                  <th>ID</th>
+                  <th>Product Name</th>
+                  <th>Category</th>
+                  <th>Price (₦)</th>
+                  <th>Old Price (₦)</th>
+                  <th>Image URL</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-products-table-body">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: ADD NEW PRODUCT -->
+      <div id="add-product-tab" class="admin-tab-content" style="display:none;">
+        <div class="admin-panel-card">
+          <h3 class="admin-section-title">Add New Product to Store</h3>
+          <p class="admin-section-desc">Fill in details and provide an image URL to publish a new item to the store and marketplace.</p>
+
+          <form onsubmit="handleAddNewProduct(event)" class="admin-form-grid">
+            <div class="form-field">
+              <label for="new-prod-id">Product ID / SKU</label>
+              <input type="text" id="new-prod-id" placeholder="e.g. bed-007" required>
+            </div>
+
+            <div class="form-field">
+              <label for="new-prod-name">Product Name</label>
+              <input type="text" id="new-prod-name" placeholder="e.g. Royal Silk Duvet Cover" required>
+            </div>
+
+            <div class="form-field">
+              <label for="new-prod-category">Category</label>
+              <select id="new-prod-category" required>
+                <option value="bedding">Bedding (Luxury Bedding)</option>
+                <option value="fabrics">Fabrics (Brocades &amp; Textiles)</option>
+                <option value="curtains">Curtains (Drapery &amp; Drapes)</option>
+                <option value="accessories">Accessories (Home Accents)</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="new-prod-price">Sale Price (₦)</label>
+              <input type="number" id="new-prod-price" placeholder="45000" required>
+            </div>
+
+            <div class="form-field">
+              <label for="new-prod-oldprice">Original Price / Old Price (₦)</label>
+              <input type="number" id="new-prod-oldprice" placeholder="55000">
+            </div>
+
+            <div class="form-field">
+              <label for="new-prod-badge">Badge Label</label>
+              <input type="text" id="new-prod-badge" placeholder="e.g. BEST SELLER or 20% OFF">
+            </div>
+
+            <div class="form-field" style="grid-column: 1 / -1;">
+              <label for="new-prod-image">Product Image URL</label>
+              <input type="url" id="new-prod-image" placeholder="https://images.unsplash.com/photo-..." required onchange="previewNewImage(this.value)">
+              <div class="img-preview-box" id="new-img-preview">
+                <span style="color:var(--muted); font-size:0.85rem;">Image preview will appear here</span>
+              </div>
+            </div>
+
+            <div class="form-field" style="grid-column: 1 / -1;">
+              <label for="new-prod-desc">Description</label>
+              <textarea id="new-prod-desc" rows="3" placeholder="Description of fabric material, thread count, care instructions..."></textarea>
+            </div>
+
+            <div style="grid-column: 1 / -1; margin-top: 10px;">
+              <button type="submit" class="btn btn-gold" style="padding:12px 32px;">Publish Product to Store 🚀</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- TAB 4: SETTINGS & RESET -->
+      <div id="settings-tab" class="admin-tab-content" style="display:none;">
+        <div class="admin-panel-card" style="border-left:4px solid #E74C3C;">
+          <h3 class="admin-section-title" style="color:#C0392B;">Reset Custom Overrides</h3>
+          <p class="admin-section-desc">Clears all custom local storage image edits and restores the original catalog defaults.</p>
+
+          <button type="button" class="btn btn-outline" style="border-color:#E74C3C; color:#E74C3C;" onclick="resetAdminDefaults()">
+            ⚠️ Reset All Custom Edits to Factory Defaults
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Edit Product Modal -->
+  <dialog id="edit-prod-dialog" class="custom-dialog">
+    <div class="dialog-content">
+      <button type="button" class="dialog-close-btn" onclick="closeDialog('edit-prod-dialog')">✕</button>
+      <h3>Edit Product Details</h3>
+      <form onsubmit="handleSaveProductEdit(event)" style="display:flex; flex-direction:column; gap:12px; margin-top:16px;">
+        <input type="hidden" id="edit-prod-id">
+
+        <div class="form-field">
+          <label for="edit-prod-name">Product Name</label>
+          <input type="text" id="edit-prod-name" required>
+        </div>
+
+        <div class="form-field">
+          <label for="edit-prod-image">Image URL</label>
+          <input type="url" id="edit-prod-image" required onchange="previewEditImage(this.value)">
+          <div class="img-preview-box" id="edit-img-preview" style="height:100px;">
+            <img src="" id="edit-img-preview-tag" alt="Preview">
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="form-field">
+            <label for="edit-prod-price">Sale Price (₦)</label>
+            <input type="number" id="edit-prod-price" required>
+          </div>
+          <div class="form-field">
+            <label for="edit-prod-oldprice">Old Price (₦)</label>
+            <input type="number" id="edit-prod-oldprice">
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="edit-prod-badge">Badge</label>
+          <input type="text" id="edit-prod-badge">
+        </div>
+
+        <button type="submit" class="btn btn-gold" style="width:100%; margin-top:8px;">Save Changes 💾</button>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Admin Management Script
+    let currentAdminProducts = [];
+    let currentHeroSlides = [];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      currentAdminProducts = typeof getMergedProducts === "function" ? getMergedProducts() : PRODUCTS;
+      currentHeroSlides = typeof getMergedHeroSlides === "function" ? getMergedHeroSlides() : [];
+
+      loadHeroSlidesForm();
+      renderAdminProductsTable();
+    });
+
+    function switchAdminTab(tabId) {
+      document.querySelectorAll(".admin-tab-content").forEach(el => el.style.display = "none");
+      document.querySelectorAll(".admin-tab-btn").forEach(el => el.classList.remove("active"));
+
+      const activeEl = document.getElementById(tabId);
+      if (activeEl) activeEl.style.display = "block";
+
+      event.target.classList.add("active");
+    }
+
+    function loadHeroSlidesForm() {
+      const container = document.getElementById("hero-slides-form-fields");
+      if (!container) return;
+
+      container.innerHTML = currentHeroSlides.map((slide, idx) => `
+        <div style="background:#FAF8F2; padding:18px; border-radius:8px; border:1px solid var(--border);">
+          <h4 style="font-size:0.95rem; color:var(--navy); margin-bottom:12px;">Slide 0${idx + 1} Settings</h4>
+          <div class="admin-form-grid">
+            <div class="form-field" style="grid-column: 1 / -1;">
+              <label>Slide Photo URL</label>
+              <input type="url" class="hero-slide-url-input" value="${slide.image}" required onchange="updateSlidePreview(${idx}, this.value)">
+              <div class="img-preview-box" id="hero-prev-${idx}" style="height:120px; margin-top:8px;">
+                <img src="${slide.image}" alt="Slide ${idx + 1}">
+              </div>
+            </div>
+            <div class="form-field">
+              <label>Headline Title</label>
+              <input type="text" class="hero-slide-title-input" value="${slide.title}">
+            </div>
+            <div class="form-field">
+              <label>Subtitle</label>
+              <input type="text" class="hero-slide-subtitle-input" value="${slide.subtitle}">
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function updateSlidePreview(index, url) {
+      const box = document.getElementById(`hero-prev-${index}`);
+      if (box && url) {
+        box.innerHTML = `<img src="${url}" alt="Preview">`;
+      }
+    }
+
+    function saveHeroSlides(e) {
+      e.preventDefault();
+      const urls = document.querySelectorAll(".hero-slide-url-input");
+      const titles = document.querySelectorAll(".hero-slide-title-input");
+      const subtitles = document.querySelectorAll(".hero-slide-subtitle-input");
+
+      const updated = [];
+      urls.forEach((urlInput, idx) => {
+        updated.push({
+          image: urlInput.value.trim(),
+          title: titles[idx] ? titles[idx].value.trim() : "",
+          subtitle: subtitles[idx] ? subtitles[idx].value.trim() : ""
+        });
+      });
+
+      localStorage.setItem("salama_custom_hero_slides", JSON.stringify(updated));
+      currentHeroSlides = updated;
+      showAdminToast("Hero landing slides updated successfully!");
+    }
+
+    function renderAdminProductsTable() {
+      const tbody = document.getElementById("admin-products-table-body");
+      if (!tbody) return;
+
+      tbody.innerHTML = currentAdminProducts.map(p => `
+        <tr>
+          <td><img src="${p.image}" alt="" class="thumb-small" onerror="this.src='${FALLBACK_IMAGE}';"></td>
+          <td><code>${p.id}</code></td>
+          <td><strong>${p.name}</strong></td>
+          <td><span class="tag" style="font-size:0.7rem;">${p.categoryName || p.category}</span></td>
+          <td><strong>${formatNaira(p.price)}</strong></td>
+          <td>${p.oldPrice ? formatNaira(p.oldPrice) : '-'}</td>
+          <td style="max-width:200px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:0.78rem; color:var(--muted);">${p.image}</td>
+          <td>
+            <div style="display:flex; gap:6px;">
+              <button type="button" class="action-btn-sm btn-edit" onclick="openEditProductModal('${p.id}')">Edit</button>
+              <button type="button" class="action-btn-sm btn-delete" onclick="deleteProduct('${p.id}')">Delete</button>
+            </div>
+          </td>
+        </tr>
+      `).join("");
+    }
+
+    function openEditProductModal(productId) {
+      const prod = currentAdminProducts.find(p => p.id === productId);
+      if (!prod) return;
+
+      document.getElementById("edit-prod-id").value = prod.id;
+      document.getElementById("edit-prod-name").value = prod.name;
+      document.getElementById("edit-prod-image").value = prod.image;
+      document.getElementById("edit-prod-price").value = prod.price;
+      document.getElementById("edit-prod-oldprice").value = prod.oldPrice || "";
+      document.getElementById("edit-prod-badge").value = prod.badge || "";
+      
+      const prev = document.getElementById("edit-img-preview-tag");
+      if (prev) prev.src = prod.image;
+
+      const dialog = document.getElementById("edit-prod-dialog");
+      if (dialog) dialog.showModal();
+    }
+
+    function previewEditImage(url) {
+      const prev = document.getElementById("edit-img-preview-tag");
+      if (prev && url) prev.src = url;
+    }
+
+    function previewNewImage(url) {
+      const box = document.getElementById("new-img-preview");
+      if (box && url) box.innerHTML = `<img src="${url}" alt="Preview">`;
+    }
+
+    function handleSaveProductEdit(e) {
+      e.preventDefault();
+      const id = document.getElementById("edit-prod-id").value;
+      const name = document.getElementById("edit-prod-name").value;
+      const image = document.getElementById("edit-prod-image").value;
+      const price = parseFloat(document.getElementById("edit-prod-price").value);
+      const oldPrice = parseFloat(document.getElementById("edit-prod-oldprice").value);
+      const badge = document.getElementById("edit-prod-badge").value;
+
+      const idx = currentAdminProducts.findIndex(p => p.id === id);
+      if (idx > -1) {
+        currentAdminProducts[idx].name = name;
+        currentAdminProducts[idx].image = image;
+        currentAdminProducts[idx].price = price;
+        if (!isNaN(oldPrice) && oldPrice > 0) currentAdminProducts[idx].oldPrice = oldPrice;
+        if (badge) currentAdminProducts[idx].badge = badge;
+
+        saveProductsToLocalStorage();
+        renderAdminProductsTable();
+        closeDialog("edit-prod-dialog");
+        showAdminToast(`Updated "${name}" photo & details!`);
+      }
+    }
+
+    function handleAddNewProduct(e) {
+      e.preventDefault();
+      const id = document.getElementById("new-prod-id").value.trim();
+      const name = document.getElementById("new-prod-name").value.trim();
+      const category = document.getElementById("new-prod-category").value;
+      const price = parseFloat(document.getElementById("new-prod-price").value);
+      const oldPriceVal = parseFloat(document.getElementById("new-prod-oldprice").value);
+      const badge = document.getElementById("new-prod-badge").value.trim();
+      const image = document.getElementById("new-prod-image").value.trim();
+      const desc = document.getElementById("new-prod-desc").value.trim();
+
+      const catNameMap = {
+        bedding: "Luxury Bedding",
+        fabrics: "Premium Fabrics",
+        curtains: "Curtains & Drapes",
+        accessories: "Home Accessories"
+      };
+
+      const newProd = {
+        id: id || "prod-" + Date.now(),
+        name,
+        category,
+        categoryName: catNameMap[category] || "Luxury Fabrics",
+        price,
+        oldPrice: !isNaN(oldPriceVal) && oldPriceVal > 0 ? oldPriceVal : undefined,
+        badge: badge || "NEW ARRIVAL",
+        rating: 5.0,
+        reviewsCount: 1,
+        image,
+        description: desc || name,
+        inStock: true
+      };
+
+      currentAdminProducts.unshift(newProd);
+      saveProductsToLocalStorage();
+      renderAdminProductsTable();
+      showAdminToast(`Published new product "${name}"!`);
+      switchAdminTab("products-tab");
+    }
+
+    function deleteProduct(productId) {
+      if (confirm(`Are you sure you want to delete product "${productId}"?`)) {
+        currentAdminProducts = currentAdminProducts.filter(p => p.id !== productId);
+        saveProductsToLocalStorage();
+        renderAdminProductsTable();
+        showAdminToast("Product removed from catalog.");
+      }
+    }
+
+    function saveProductsToLocalStorage() {
+      localStorage.setItem("salama_custom_products", JSON.stringify(currentAdminProducts));
+    }
+
+    function resetAdminDefaults() {
+      if (confirm("Reset all custom image & product edits back to factory default dataset?")) {
+        localStorage.removeItem("salama_custom_products");
+        localStorage.removeItem("salama_custom_hero_slides");
+        currentAdminProducts = PRODUCTS;
+        currentHeroSlides = typeof getMergedHeroSlides === "function" ? getMergedHeroSlides() : [];
+        loadHeroSlidesForm();
+        renderAdminProductsTable();
+        showAdminToast("Reset to default product dataset!");
+      }
+    }
+
+    function showAdminToast(msg) {
+      const toast = document.createElement("div");
+      toast.className = "toast-admin";
+      toast.textContent = "✨ " + msg;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+  </script>
+</body>
+</html>

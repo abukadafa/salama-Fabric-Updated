@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>SALAMA Fabrics &amp; Bedding | Where Comfort Meets Timeless Elegance</title>
+  <meta name="description" content="Discover premium luxury bedding, damask brocades, plush velvet curtains, and exquisite home fabrics. Order directly online with WhatsApp delivery across Nigeria.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  
+  <!-- PWA & Mobile Web App Meta -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#071D40">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SALAMA">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <aside class="announce" aria-label="Announcement">
+    <span>DISCOVER LUXURY &amp; TIMELESS ELEGANCE WITH SALAMA</span>
+    <span>•</span>
+    <span>NATIONWIDE DELIVERY ACROSS NIGERIA</span>
+    <span>•</span>
+    <span>WHATSAPP ORDERS: <a href="https://wa.me/2348147709019" target="_blank" rel="noopener">+234 814 770 9019</a></span>
+  </aside>
+
+  <!-- Main Header & Navigation -->
+  <header>
+    <div class="nav-container">
+      <a class="brand" href="#top" aria-label="SALAMA Fabrics & Bedding Home">
+        <img src="assets/logo.svg" alt="SALAMA Logo" class="brand-logo-svg">
+        <div class="brand-text">
+          <span class="brand-name">SALAMA</span>
+          <span class="brand-tagline">Fabrics &amp; Bedding</span>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="navlinks" aria-label="Main Navigation">
+        <a href="index.html" class="active">Home</a>
+        <a href="shop.html">Shop All Products 🛍️</a>
+
+        <select class="nav-select-element" onchange="if(this.value){ window.location.href=this.value; this.selectedIndex=0; }">
+          <option value="" selected disabled>Explore Menu ▾</option>
+          <option value="#bedding-partition">🛏️ Luxury Bedding</option>
+          <option value="#fabrics-partition">🧵 Fine Fabrics &amp; Brocades</option>
+          <option value="#about">📖 Our Story</option>
+          <option value="#why-us">✨ Why Choose SALAMA</option>
+        </select>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="nav-actions">
+        <button type="button" class="icon-btn" onclick="openSearchDialog()" title="Search products (Press / or Ctrl+K)" aria-label="Open search">
+          🔍
+        </button>
+        <button type="button" class="cart-btn" onclick="openCartDrawer()" aria-label="View shopping bag">
+          <span>🛍️ Bag</span>
+          <span class="cart-count-badge">0</span>
+        </button>
+        <button type="button" class="menu-toggle-btn" id="menu-toggle-btn" aria-label="Toggle mobile menu">
+          ☰
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-nav" id="mobile-menu">
+      <a href="#top">Home</a>
+      <a href="#shop">Shop All Collections</a>
+      <a href="#categories">Browse Categories</a>
+      <a href="#about">Our Story</a>
+      <a href="#why-us">Why Choose Us</a>
+      <a href="#contact">Contact &amp; WhatsApp Support</a>
+      <button type="button" class="mobile-install-btn" id="mobile-install-btn" onclick="triggerPwaInstall()">
+        <span>📲 Install SALAMA App</span>
+      </button>
+
+      <!-- Mobile Social Channels -->
+      <div class="mobile-socials">
+        <a href="https://facebook.com/salamafabrics" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://x.com/salamafabrics" target="_blank" rel="noopener" class="social-btn" aria-label="X (Twitter)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://instagram.com/salamafabrics" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://linkedin.com/company/salamafabrics" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+        <a href="https://tiktok.com/@salamafabrics" target="_blank" rel="noopener" class="social-btn" aria-label="TikTok">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 3 15.68 6.34 6.34 0 0 0 9.35 22a6.33 6.33 0 0 0 6.33-6.32V8.78a8.21 8.21 0 0 0 4.91 1.63v-3.72z"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Full-Screen Hero Landing Slideshow (100vh) -->
+    <section class="full-screen-hero" id="top" style="max-width: none; width: 100%;">
+      <div class="hero-slideshow" id="hero-slideshow">
+        <div class="hero-slide active">
+          <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1600&q=85" alt="SALAMA Luxury Master Bedding Suite" class="hero-slide-img">
+          <div class="hero-slide-overlay"></div>
+        </div>
+        <div class="hero-slide">
+          <img src="https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&w=1600&q=85" alt="SALAMA Premium Damask Brocades and Fine Fabrics" class="hero-slide-img">
+          <div class="hero-slide-overlay"></div>
+        </div>
+        <div class="hero-slide">
+          <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1600&q=85" alt="SALAMA Velvet Blackout Drapery and Curtains" class="hero-slide-img">
+          <div class="hero-slide-overlay"></div>
+        </div>
+        <div class="hero-slide">
+          <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=1600&q=85" alt="SALAMA Pure Mulberry Silk Satin Sheets" class="hero-slide-img">
+          <div class="hero-slide-overlay"></div>
+        </div>
+      </div>
+
+      <!-- Overlaid Hero Content Box -->
+      <div class="hero-content-overlay">
+        <div class="hero-content-inner">
+          <div class="eyebrow">SALAMA FABRICS &amp; BEDDING • ESTABLISHED IN NIGERIA</div>
+          <h1>Where Comfort Meets<br><span class="gold">Timeless Elegance</span></h1>
+          <p>Transform your sanctuary with 1000TC Egyptian cotton bedding, royal Guinea brocades, and opulent velvet draperies curated for refined living.</p>
+          
+          <div class="cta-row">
+            <a href="#bedding-partition" class="btn btn-gold">Explore Collections</a>
+            <a href="https://wa.me/2348147709019?text=Hello%20SALAMA%2C%20I%20would%20like%20to%20inquire%20about%20your%20fabrics%20and%20bedding." 
+               target="_blank" rel="noopener" class="btn btn-whatsapp">
+              <span>💬 Chat on WhatsApp</span>
+            </a>
+          </div>
+
+          <div class="hero-trust-badges">
+            <span>✦ 100% Egyptian Cotton &amp; Pure Silk</span>
+            <span>✦ Fast Nationwide Delivery Across Nigeria</span>
+            <span>✦ Bespoke Cut-to-Length Fabrics</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Arrows & Pagination Dots -->
+      <button type="button" class="slider-arrow prev-arrow" onclick="moveHeroSlide(-1)" aria-label="Previous Slide">❮</button>
+      <button type="button" class="slider-arrow next-arrow" onclick="moveHeroSlide(1)" aria-label="Next Slide">❯</button>
+
+      <div class="slider-dots" id="hero-slider-dots">
+        <button type="button" class="dot active" onclick="setHeroSlide(0)" aria-label="Slide 1"></button>
+        <button type="button" class="dot" onclick="setHeroSlide(1)" aria-label="Slide 2"></button>
+        <button type="button" class="dot" onclick="setHeroSlide(2)" aria-label="Slide 3"></button>
+        <button type="button" class="dot" onclick="setHeroSlide(3)" aria-label="Slide 4"></button>
+      </div>
+
+      <!-- Scroll Hint -->
+      <a href="#bedding-partition" class="scroll-down-hint" aria-label="Scroll to explore collections">
+        <span>Scroll to Explore</span>
+        <span class="scroll-arrow">↓</span>
+      </a>
+    </section>
+
+    <!-- PARTITION 1: LUXURY BEDDING COLLECTION -->
+    <section class="partition-section" id="bedding-partition">
+      <div class="partition-banner bedding-banner">
+        <div class="partition-banner-content">
+          <div class="tag">PARTITION 01</div>
+          <h2>🛏️ Luxury Bedding Collection</h2>
+          <p>1000TC Certified Egyptian Cotton duvet sets, mulberry silk sheets, and royal hotel suite pillowcases.</p>
+        </div>
+      </div>
+
+      <div class="prod-grid" id="bedding-products-grid">
+        <!-- Rendered dynamically by js/app.js -->
+      </div>
+    </section>
+
+    <!-- PARTITION 2: TEXTILES & FINE FABRICS -->
+    <section class="partition-section" id="fabrics-partition">
+      <div class="partition-banner fabrics-banner">
+        <div class="partition-banner-content">
+          <div class="tag">PARTITION 02</div>
+          <h2>🧵 Textiles &amp; Fine Fabrics Collection</h2>
+          <p>Authentic Bazin Riche Guinea Brocades, Italian Floral Damasks, French Laces, and Pure Silk Chiffons by the yard.</p>
+        </div>
+      </div>
+
+      <div class="prod-grid" id="fabrics-products-grid">
+        <!-- Rendered dynamically by js/app.js -->
+      </div>
+    </section>
+
+    <!-- FOUNDER'S VIDEO SHOWCASE SECTION -->
+    <section class="owner-video-section" id="founder-showcase">
+      <div class="section-head" style="margin-bottom: 30px;">
+        <div class="tag">FOUNDER'S SHOWCASE • EXCLUSIVE PREVIEW</div>
+        <p>Watch our virtual showroom walkthrough and discover the artistry behind our 1000TC Egyptian cotton weaves and Guinea brocades.</p>
+      </div>
+
+      <div class="video-showcase-frame">
+        <video id="owner-video-player" 
+               controls 
+               playsinline 
+               poster="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=85" 
+               class="owner-video-element">
+          <source id="owner-video-source" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+          Your browser does not support HTML5 video player.
+        </video>
+        
+        <div class="video-badge-overlay">
+          <span class="video-live-dot">●</span>
+          <span>SALAMA MASTER TEXTILES • VIRTUAL TOUR</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why SALAMA Section -->
+    <section id="why-us" style="padding-top: 20px;">
+      <div class="section-head">
+        <div class="tag">OUR PROMISE</div>
+        <h2>Why Choose SALAMA</h2>
+        <p>We pride ourselves on unmatched material integrity, bespoke attention to detail, and seamless customer service.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-box">
+          <div class="feature-icon">✨</div>
+          <h4>Long-Staple Integrity</h4>
+          <p>We test and source authentic Egyptian cotton, pure mulberry silk, and heavyweight damasks that maintain their luster wash after wash.</p>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon">🚚</div>
+          <h4>Nationwide Delivery</h4>
+          <p>Prompt, secure dispatch across Lagos, Abuja, Port Harcourt, Kano, and all 36 states with reliable tracking updates.</p>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon">✂️</div>
+          <h4>Bespoke Customization</h4>
+          <p>Need custom curtain drop lengths or specific fabric yardage? Our master tailors accommodate custom dimensions effortlessly.</p>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon">💬</div>
+          <h4>Direct WhatsApp Concierge</h4>
+          <p>Real-time personalized consultations, fabric advice, and swift order confirmations directly with our design consultants.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand Story Section -->
+    <section class="about-section" id="about" style="max-width: none;">
+      <div class="about-grid">
+        <div class="about-content">
+          <div class="tag" style="color:var(--gold); letter-spacing:.22em; font-size:.74rem; font-weight:700; margin-bottom:12px;">OUR HERITAGE</div>
+          <h2>A Touch of Elegance.<br>A Feeling of Home.</h2>
+          <p>At SALAMA Fabrics &amp; Bedding, we believe that your home is your sanctuary. Everyday comfort should never come at the expense of breathtaking aesthetics. That is why every thread count, fabric weave, and finish is chosen with uncompromising standards of artistry and durability.</p>
+          <p>Whether you are outfitting a newly built home, refreshing your bedroom with hotel-quality linens, or specifying textiles for an upscale interior project, our curated selections bring warmth and prestige to your spaces.</p>
+          <div style="display: flex; gap: 14px; margin-top: 26px; flex-wrap: wrap;">
+            <a href="#shop" class="btn btn-gold">Browse The Collection</a>
+            <a href="https://wa.me/2348147709019" target="_blank" rel="noopener" class="btn btn-outline" style="color: var(--navy); border-color: var(--navy);">Speak with a Consultant</a>
+          </div>
+        </div>
+        <div class="about-visual-box">
+          <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1000&q=80" alt="SALAMA Fabrics Bedroom Ambience" loading="lazy">
+          <div class="about-badge-card">
+            <h4>Bespoke Living</h4>
+            <p>Curated textiles and bedding handcrafted to elevate your personal sanctuary.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       Native <dialog> Modals
+       ========================================================================== -->
+
+  <!-- 1. Quick View Modal Dialog -->
+  <dialog id="quick-view-dialog" aria-labelledby="modal-title">
+    <button type="button" class="modal-close-btn" onclick="closeDialog('quick-view-dialog')" aria-label="Close modal">✕</button>
+    <div class="modal-layout">
+      <div class="modal-media">
+        <img id="modal-img" src="" alt="Product Preview">
+      </div>
+      <div class="modal-details">
+        <div class="modal-cat" id="modal-cat">Category</div>
+        <h2 class="modal-title" id="modal-title">Product Name</h2>
+        <div class="modal-price" id="modal-price">₦0</div>
+        <p class="modal-desc" id="modal-desc">Product description goes here.</p>
+
+        <!-- Color Selection -->
+        <div class="modal-options-group">
+          <label class="modal-label">Color / Finish: <span id="selected-color-name" style="font-weight:400; color:var(--muted);"></span></label>
+          <div class="color-swatches" id="modal-colors"></div>
+        </div>
+
+        <!-- Size / Dimensions Selection -->
+        <div class="modal-options-group">
+          <label class="modal-label" for="modal-size">Size / Dimensions:</label>
+          <select id="modal-size" class="size-select"></select>
+        </div>
+
+        <!-- Quantity Stepper -->
+        <div class="modal-options-group" style="display:flex; align-items:center; gap:16px;">
+          <label class="modal-label" style="margin:0;">Quantity:</label>
+          <div class="quantity-stepper">
+            <button type="button" class="qty-btn" onclick="adjustModalQty(-1)" aria-label="Decrease quantity">−</button>
+            <span class="qty-val" id="modal-qty-val">1</span>
+            <button type="button" class="qty-btn" onclick="adjustModalQty(1)" aria-label="Increase quantity">+</button>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="modal-actions">
+          <button type="button" class="btn btn-gold" onclick="addModalItemToCart()">Add to Bag</button>
+          <button type="button" class="btn btn-whatsapp" onclick="orderModalItemWhatsApp()">Order on WhatsApp</button>
+        </div>
+
+        <!-- Product Specs Accordion -->
+        <ul class="modal-specs-list" id="modal-specs"></ul>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- 2. Live Search Modal Dialog -->
+  <dialog id="search-dialog" aria-labelledby="search-dialog-title">
+    <div class="search-modal-box">
+      <div class="search-input-wrapper">
+        <span>🔍</span>
+        <input type="search" id="search-input" class="search-input" placeholder="Search bedding, brocade, curtains, silk..." autocomplete="off">
+        <button type="button" class="modal-close-btn" style="position:static; width:30px; height:30px; font-size:1rem;" onclick="closeDialog('search-dialog')" aria-label="Close search">✕</button>
+      </div>
+      <div class="search-results-list" id="search-results-list">
+        <!-- Live search results appear here -->
+      </div>
+    </div>
+  </dialog>
+
+  <!-- 3. Secure Checkout & Payment Modal Dialog -->
+  <dialog id="checkout-dialog" aria-labelledby="checkout-title">
+    <div class="checkout-modal-content">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 6px;">
+        <div>
+          <h3 id="checkout-title" style="font-size: 1.35rem; color: var(--navy);">Secure Checkout &amp; Order</h3>
+          <p class="subtitle" style="font-size: 0.85rem; color: var(--muted); margin-top: 3px;">Enter your delivery details and choose your payment option.</p>
+        </div>
+        <button type="button" class="modal-close-btn" style="position:static; width:32px; height:32px;" onclick="closeDialog('checkout-dialog')" aria-label="Close modal">✕</button>
+      </div>
+
+      <form id="checkout-form" onsubmit="processCheckoutOrder(event)">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div class="form-group">
+            <label for="cust-name">Full Name *</label>
+            <input type="text" id="cust-name" required placeholder="e.g. Amina Bello">
+          </div>
+          <div class="form-group">
+            <label for="cust-email">Email Address *</label>
+            <input type="email" id="cust-email" required placeholder="e.g. amina@example.com">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div class="form-group">
+            <label for="cust-phone">WhatsApp Phone Number *</label>
+            <input type="tel" id="cust-phone" required placeholder="e.g. 0814 770 9019">
+          </div>
+          <div class="form-group">
+            <label for="cust-state">Delivery State / City *</label>
+            <select id="cust-state" required>
+              <option value="Lagos State">Lagos State</option>
+              <option value="Abuja (FCT)">Abuja (FCT)</option>
+              <option value="Rivers (Port Harcourt)">Rivers (Port Harcourt)</option>
+              <option value="Kano State">Kano State</option>
+              <option value="Oyo (Ibadan)">Oyo (Ibadan)</option>
+              <option value="Enugu State">Enugu State</option>
+              <option value="Delta State">Delta State</option>
+              <option value="Kaduna State">Kaduna State</option>
+              <option value="Ogun State">Ogun State</option>
+              <option value="Other State (Nationwide Dispatch)">Other State (Nationwide Dispatch)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cust-address">Street / Doorstep Delivery Address *</label>
+          <textarea id="cust-address" rows="2" required placeholder="Apartment / House number, street name, estate, area"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="cust-notes">Order Notes or Custom Sizing (Optional)</label>
+          <input type="text" id="cust-notes" placeholder="e.g. Preferred delivery time, custom curtain drop length">
+        </div>
+
+        <!-- Payment Option Selector -->
+        <div class="form-group" style="margin-top: 18px;">
+          <label class="modal-label" style="font-weight: 700; color: var(--navy); margin-bottom: 10px; display: block;">Select Payment Option *</label>
+          <div class="payment-methods-grid">
+            <!-- 1. Paystack -->
+            <label class="payment-method-card active" for="pay-method-paystack" id="label-paystack">
+              <input type="radio" id="pay-method-paystack" name="payment-method" value="paystack" checked onchange="onPaymentMethodChanged('paystack')">
+              <div class="method-info">
+                <div class="method-title">
+                  <span>💳 Pay Online with Paystack</span>
+                  <span class="method-badge">Instant</span>
+                </div>
+                <p class="method-desc">Nigerian Debit Cards (Mastercard, Visa, Verve), Direct Bank Transfer, USSD, Apple Pay</p>
+              </div>
+            </label>
+
+            <!-- 2. Flutterwave -->
+            <label class="payment-method-card" for="pay-method-flutterwave" id="label-flutterwave">
+              <input type="radio" id="pay-method-flutterwave" name="payment-method" value="flutterwave" onchange="onPaymentMethodChanged('flutterwave')">
+              <div class="method-info">
+                <div class="method-title">
+                  <span>🦋 Pay Online with Flutterwave</span>
+                  <span class="method-badge">Instant</span>
+                </div>
+                <p class="method-desc">Debit Card, Bank Transfer, USSD, Barter, African Mobile Money</p>
+              </div>
+            </label>
+
+            <!-- 3. Direct Bank Transfer -->
+            <label class="payment-method-card" for="pay-method-bank_transfer" id="label-bank_transfer">
+              <input type="radio" id="pay-method-bank_transfer" name="payment-method" value="bank_transfer" onchange="onPaymentMethodChanged('bank_transfer')">
+              <div class="method-info">
+                <div class="method-title">
+                  <span>🏛️ Direct Bank Transfer</span>
+                  <span class="method-badge" style="background: #E3F2FD; color: #1565C0;">Instant Account</span>
+                </div>
+                <p class="method-desc">Transfer to our official GTBank account &amp; send payment proof on WhatsApp for fast dispatch</p>
+              </div>
+            </label>
+
+            <!-- 4. Payment on Delivery -->
+            <label class="payment-method-card" for="pay-method-pod" id="label-pod">
+              <input type="radio" id="pay-method-pod" name="payment-method" value="pod" onchange="onPaymentMethodChanged('pod')">
+              <div class="method-info">
+                <div class="method-title">
+                  <span>🚚 Payment on Delivery (POD)</span>
+                  <span class="method-badge pod">Doorstep</span>
+                </div>
+                <p class="method-desc">Inspect your fabrics/bedding upon arrival &amp; pay via Cash or Mobile POS transfer to rider</p>
+              </div>
+            </label>
+
+            <!-- 5. Direct WhatsApp Order -->
+            <label class="payment-method-card" for="pay-method-whatsapp" id="label-whatsapp">
+              <input type="radio" id="pay-method-whatsapp" name="payment-method" value="whatsapp" onchange="onPaymentMethodChanged('whatsapp')">
+              <div class="method-info">
+                <div class="method-title">
+                  <span>💬 Direct WhatsApp Order</span>
+                </div>
+                <p class="method-desc">Send itemized order to WhatsApp for custom tailoring consultation or manual direct chat</p>
+              </div>
+            </label>
+          </div>
+
+          <!-- Bank Transfer Detail Accordion Box (Shown when Bank Transfer is selected) -->
+          <div class="bank-details-card" id="bank-details-box" style="display: none;">
+            <div class="bank-card-header">
+              <span class="bank-title">SALAMA Official Bank Account</span>
+              <span class="bank-badge">GTBank</span>
+            </div>
+            <div class="bank-field">
+              <span class="bank-field-label">Bank Name:</span>
+              <strong class="bank-field-val" id="bank-name-val">Guaranty Trust Bank (GTBank)</strong>
+            </div>
+            <div class="bank-field">
+              <span class="bank-field-label">Account Name:</span>
+              <strong class="bank-field-val" id="bank-account-name-val">SALAMA Fabrics &amp; Bedding Ltd</strong>
+            </div>
+            <div class="bank-field account-num-row">
+              <div>
+                <span class="bank-field-label">Account Number:</span>
+                <strong class="bank-field-val" id="bank-account-num-val" style="font-size: 1.15rem; color: var(--navy); font-family: monospace; letter-spacing: 1px;">0147709019</strong>
+              </div>
+              <button type="button" class="btn-copy-account" id="btn-copy-account" onclick="copySalamaAccount()">
+                <span id="copy-btn-text">📋 Copy</span>
+              </button>
+            </div>
+            <p class="bank-instruction">
+              💡 <em>Please transfer the exact subtotal. Once sent, click <strong>"Confirm Bank Transfer"</strong> below. Your order ticket will be generated and you can send payment proof on WhatsApp!</em>
+            </p>
+          </div>
+        </div>
+
+        <!-- Order Summary Box -->
+        <div class="checkout-order-summary" id="checkout-summary-box"></div>
+
+        <button type="submit" class="checkout-btn" id="checkout-submit-btn">
+          <span id="checkout-btn-text">💳 Pay with Paystack</span>
+        </button>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- 4. PWA iOS & Mobile Install Guidance Modal Dialog -->
+  <dialog id="pwa-install-dialog" aria-labelledby="pwa-dialog-title">
+    <div class="pwa-install-modal-content">
+      <div style="font-size: 2.2rem; margin-bottom: 6px;">📲</div>
+      <h3 id="pwa-dialog-title" style="font-size: 1.25rem; margin-bottom: 6px; color: var(--navy);">Install SALAMA App</h3>
+      <p style="font-size: 0.86rem; color: var(--muted); line-height: 1.5; margin-bottom: 18px;">
+        Install SALAMA Fabrics &amp; Bedding on your home screen for rapid offline access and a full-screen mobile app experience.
+      </p>
+      <div class="pwa-instructions-box">
+        <p style="margin-bottom: 10px;">
+          <strong>Apple iOS (Safari):</strong><br>
+          1. Tap the <strong>Share</strong> button <span style="font-size:1.1rem;">⎋</span> at the bottom of Safari.<br>
+          2. Scroll down &amp; tap <strong>"Add to Home Screen"</strong> ➕.
+        </p>
+        <p>
+          <strong>Android (Chrome):</strong><br>
+          Tap the three dots <strong>⋮</strong> &amp; select <strong>"Install app"</strong> or <strong>"Add to Home screen"</strong>.
+        </p>
+      </div>
+      <button type="button" class="btn btn-gold" style="width: 100%; justify-content: center;" onclick="closeDialog('pwa-install-dialog')">Got it</button>
+    </div>
+  </dialog>
+
+  <!-- 5. Order Success & Payment Receipt Modal Dialog -->
+  <dialog id="order-success-dialog" aria-labelledby="receipt-dialog-title">
+    <div class="receipt-modal-box">
+      <div class="receipt-icon">🎉</div>
+      <h3 id="receipt-dialog-title" class="receipt-title">Order Confirmed!</h3>
+      <p class="receipt-subtitle" id="receipt-subtitle">Thank you for choosing SALAMA Fabrics &amp; Bedding.</p>
+
+      <div class="receipt-card">
+        <div class="receipt-row">
+          <span>Order Reference:</span>
+          <strong id="receipt-ref" style="font-family: monospace; color: var(--navy); font-size: 0.95rem;">SALAMA-0000</strong>
+        </div>
+        <div class="receipt-row">
+          <span>Payment Option:</span>
+          <strong id="receipt-method">Paystack</strong>
+        </div>
+        <div class="receipt-row">
+          <span>Status:</span>
+          <span class="receipt-status-badge" id="receipt-status">Paid &amp; Verified</span>
+        </div>
+        <div class="receipt-row">
+          <span>Customer:</span>
+          <span id="receipt-customer">Amina Bello</span>
+        </div>
+        <div class="receipt-row">
+          <span>Delivery State:</span>
+          <span id="receipt-address">Lagos State</span>
+        </div>
+        <div class="receipt-divider"></div>
+        <div class="receipt-row total">
+          <span>Total Amount:</span>
+          <strong id="receipt-amount" style="color: var(--navy); font-size: 1.15rem;">₦0</strong>
+        </div>
+        <div id="receipt-bank-box" style="display: none; background: #FFF9E6; border: 1px dashed var(--gold); border-radius: var(--radius-sm); padding: 12px; margin-top: 10px; font-size: 0.82rem; text-align: left;">
+          <div style="font-weight: 700; color: var(--navy); margin-bottom: 4px;">GTBank: 0147709019 • SALAMA Fabrics &amp; Bedding Ltd</div>
+          <div style="color: var(--muted); font-size: 0.78rem;">Please upload your transfer screenshot using the WhatsApp button below for instant courier release!</div>
+        </div>
+      </div>
+
+      <div class="receipt-actions">
+        <button type="button" class="btn btn-whatsapp" id="receipt-whatsapp-btn" style="width: 100%; justify-content: center;">
+          <span>💬 Track &amp; Dispatch via WhatsApp</span>
+        </button>
+        <button type="button" class="btn btn-outline" style="width: 100%; justify-content: center; margin-top: 10px; color: var(--navy); border-color: var(--border);" onclick="closeDialog('order-success-dialog')">
+          <span>Continue Shopping</span>
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ==========================================================================
+       Slide-out Shopping Bag Drawer
+       ========================================================================== -->
+  <div class="cart-backdrop" id="cart-backdrop"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping Bag">
+    <div class="cart-header">
+      <h3>
+        <span>🛍️ Your Shopping Bag</span>
+        <span id="drawer-cart-count" style="font-size:0.9rem; font-weight:400; color:var(--muted);">(0)</span>
+      </h3>
+      <button type="button" class="close-drawer-btn" onclick="closeCartDrawer()" aria-label="Close cart drawer">✕</button>
+    </div>
+
+    <!-- Scrollable Items List -->
+    <div class="cart-items-list" id="cart-items-list"></div>
+
+    <!-- Drawer Footer -->
+    <div class="cart-footer">
+      <div class="delivery-note">
+        <span>✓</span> Nationwide doorstep delivery available across Nigeria
+      </div>
+      <div class="cart-summary-row total">
+        <span>Estimated Subtotal:</span>
+        <span id="cart-subtotal-val">₦0</span>
+      </div>
+      <p style="font-size:0.75rem; color:var(--muted); margin: 6px 0 16px;">Final delivery fees are confirmed on WhatsApp based on your destination address.</p>
+      
+      <button type="button" class="checkout-btn" onclick="openCheckoutModal()">
+        <span>💬 Proceed to WhatsApp Checkout</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Floating WhatsApp Assistance Button -->
+  <a href="https://wa.me/2348147709019?text=Hello%20SALAMA%20Team%2C%20I%20need%20assistance%20with%20my%20order." 
+     target="_blank" rel="noopener" class="floating-whatsapp" aria-label="Chat on WhatsApp">
+    <span>💬 WhatsApp Support</span>
+  </a>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="foot-grid">
+      <div class="foot-brand-col">
+        <div class="brand" style="margin-bottom: 12px;">
+          <img src="assets/logo.svg" alt="SALAMA Logo" style="width:40px; height:40px;">
+          <span class="brand-name" style="color:var(--white);">SALAMA</span>
+        </div>
+        <p>Premium fabrics and luxury bedding designed with uncompromising quality, elegance, and comfort for discerning homes across Nigeria.</p>
+        <p style="font-size:0.8rem; color:var(--gold-light);">Registered in Nigeria • Bespoke Textile Specialists</p>
+        
+        <!-- Social Media Channels -->
+        <div class="foot-socials">
+          <span class="social-label">Follow Our Journey</span>
+          <div class="social-links">
+            <a href="https://facebook.com/salamafabrics" target="_blank" rel="noopener" class="social-btn" aria-label="SALAMA on Facebook" title="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://x.com/salamafabrics" target="_blank" rel="noopener" class="social-btn" aria-label="SALAMA on X (Twitter)" title="X (Twitter)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://instagram.com/salamafabrics" target="_blank" rel="noopener" class="social-btn" aria-label="SALAMA on Instagram" title="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://linkedin.com/company/salamafabrics" target="_blank" rel="noopener" class="social-btn" aria-label="SALAMA on LinkedIn" title="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <a href="https://tiktok.com/@salamafabrics" target="_blank" rel="noopener" class="social-btn" aria-label="SALAMA on TikTok" title="TikTok">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 3 15.68 6.34 6.34 0 0 0 9.35 22a6.33 6.33 0 0 0 6.33-6.32V8.78a8.21 8.21 0 0 0 4.91 1.63v-3.72z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h4>Collections</h4>
+        <ul>
+          <li><a href="#shop" onclick="filterByCategory('bedding')">Luxury Bedding Sets</a></li>
+          <li><a href="#shop" onclick="filterByCategory('fabrics')">Damask &amp; Brocades</a></li>
+          <li><a href="#shop" onclick="filterByCategory('curtains')">Tailored Curtains</a></li>
+          <li><a href="#shop" onclick="filterByCategory('accessories')">Silk Throw Cushions</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Customer Care</h4>
+        <ul>
+          <li><a href="#about">Our Heritage</a></li>
+          <li><a href="#why-us">Fabric Quality Guide</a></li>
+          <li><a href="https://wa.me/2348147709019" target="_blank" rel="noopener">Custom Tailoring Inquiries</a></li>
+          <li><a href="https://wa.me/2348147709019" target="_blank" rel="noopener">Nationwide Shipping Rates</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Direct Concierge</h4>
+        <p style="font-size:0.85rem; color:#DCD6C7; margin-bottom:12px;">
+          WhatsApp &amp; Orders:<br>
+          <strong style="color:var(--gold-light); font-size:1rem;">+234 814 770 9019</strong>
+        </p>
+        <p style="font-size:0.8rem; color:#9DA4B6; margin-bottom:16px;">Subscribe for exclusive fabric arrivals and seasonal VIP catalogues:</p>
+        <form id="newsletter-form" class="newsletter-form">
+          <input type="email" class="newsletter-input" required placeholder="Enter your email" aria-label="Email address for newsletter">
+          <button type="submit" class="newsletter-btn">Join</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <div>&copy; <span id="current-year"></span> SALAMA Fabrics &amp; Bedding. All rights reserved.</div>
+      <div>Designed with Comfort, Quality &amp; Timeless Elegance.</div>
+    </div>
+  </footer>
+
+  <!-- Mobile App Bottom Navigation Bar (Visible on phones <= 768px) -->
+  <nav class="mobile-bottom-bar" aria-label="Mobile Navigation">
+    <a href="#top" class="mobile-tab" id="mobile-tab-home" aria-label="Home">
+      <span class="tab-icon">🏛️</span>
+      <span class="tab-label">Home</span>
+    </a>
+    <a href="#shop" class="mobile-tab" id="mobile-tab-shop" aria-label="Shop">
+      <span class="tab-icon">🏷️</span>
+      <span class="tab-label">Shop</span>
+    </a>
+    <button type="button" class="mobile-tab" onclick="openSearchDialog()" aria-label="Search Collection">
+      <span class="tab-icon">🔍</span>
+      <span class="tab-label">Search</span>
+    </button>
+    <button type="button" class="mobile-tab" onclick="openCartDrawer()" aria-label="Shopping Bag">
+      <span class="tab-icon" style="position:relative;">
+        🛍️
+        <span class="mobile-cart-badge cart-count-badge">0</span>
+      </span>
+      <span class="tab-label">Bag</span>
+    </button>
+    <a href="https://wa.me/2348147709019?text=Hello%20SALAMA%20Team%2C%20I%20would%20like%20to%20inquire%20about%20your%20fabrics%20and%20bedding." 
+       target="_blank" rel="noopener" class="mobile-tab whatsapp-tab" aria-label="WhatsApp Concierge">
+      <span class="tab-icon">💬</span>
+      <span class="tab-label">WhatsApp</span>
+    </a>
+  </nav>
+
+  <!-- Scripts -->
+  <!-- Payment Gateway SDKs (Paystack & Flutterwave) -->
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <script src="https://checkout.flutterwave.com/v3.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script>
+    function filterByCategory(category) {
+      AppState.activeCategory = category;
+      document.querySelectorAll(".filter-tab").forEach(tab => {
+        tab.classList.toggle("active", tab.dataset.category === category);
+      });
+      renderProducts();
+      const shopEl = document.getElementById("shop");
+      if (shopEl) shopEl.scrollIntoView({ behavior: "smooth" });
+    }
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

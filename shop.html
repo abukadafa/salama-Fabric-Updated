@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>All Products &amp; Luxury Marketplace | SALAMA Fabrics &amp; Bedding</title>
+  <meta name="description" content="Browse all premium Egyptian cotton bedding, damask brocades, and velvet drapery across Nigeria with nationwide delivery.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  
+  <!-- PWA & Favicon -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#071D40">
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    /* Specialized Marketplace Layout Styles */
+    .shop-marketplace-wrapper {
+      background-color: #F5F5F7;
+      min-height: 100vh;
+      padding-bottom: 60px;
+    }
+
+    .shop-header-search-bar {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .shop-search-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .shop-search-input-box {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      background: #F0ECE1;
+      border: 1px solid #DCD6C8;
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .shop-search-input-box:focus-within {
+      border-color: var(--gold);
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(181, 138, 34, 0.15);
+    }
+
+    .shop-search-input-box input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 12px 20px;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .shop-search-btn {
+      background: var(--gold);
+      color: var(--navy-dark);
+      font-weight: 700;
+      padding: 12px 28px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      transition: var(--transition);
+    }
+
+    .shop-search-btn:hover {
+      background: var(--gold-light);
+    }
+
+    .user-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .user-profile-menu {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--navy);
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+    }
+
+    .user-profile-menu:hover {
+      background: #FAF8F2;
+    }
+
+    /* Marketplace Layout Grid */
+    .marketplace-container {
+      max-width: 1320px;
+      margin: 24px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 270px 1fr;
+      gap: 24px;
+    }
+
+    /* Left Sidebar */
+    .filter-sidebar {
+      background: #FFFFFF;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      height: fit-content;
+    }
+
+    .filter-group {
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+    }
+
+    .filter-group:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .filter-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .filter-checkbox-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .filter-checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--charcoal);
+      cursor: pointer;
+    }
+
+    .filter-checkbox-item input[type="checkbox"],
+    .filter-checkbox-item input[type="radio"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--gold);
+      cursor: pointer;
+    }
+
+    .filter-checkbox-item .count {
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin-left: auto;
+    }
+
+    /* Price inputs */
+    .price-range-inputs {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .price-range-inputs input {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+    }
+
+    /* Marketplace 4-Column Product Grid */
+    .marketplace-main {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .marketplace-top-bar {
+      background: #FFFFFF;
+      border-radius: var(--radius-md);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .marketplace-count {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .marketplace-count strong {
+      color: var(--navy);
+    }
+
+    .grid-4-col {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    /* Retail Marketplace Product Card (Inspired by Jumia layout) */
+    .retail-prod-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: var(--transition);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .retail-prod-card:hover {
+      box-shadow: 0 8px 24px rgba(7, 29, 64, 0.12);
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+
+    .retail-card-media {
+      position: relative;
+      width: 100%;
+      padding-top: 100%; /* 1:1 Aspect ratio square */
+      background: #FAF8F2;
+      overflow: hidden;
+    }
+
+    .retail-card-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .retail-prod-card:hover .retail-card-img {
+      transform: scale(1.06);
+    }
+
+    .official-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--navy);
+      color: #FFFFFF;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      z-index: 2;
+    }
+
+    .wishlist-heart-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 1.1rem;
+      cursor: pointer;
+      z-index: 2;
+      transition: var(--transition);
+    }
+
+    .wishlist-heart-btn:hover {
+      background: #FFFFFF;
+      color: #E74C3C;
+      transform: scale(1.1);
+    }
+
+    .retail-card-body {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .retail-prod-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.35;
+      margin-bottom: 8px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      height: 2.7em;
+    }
+
+    .retail-price-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+
+    .retail-main-price {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .retail-old-price {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+
+    .discount-pill {
+      background: #FEF0D5;
+      color: #B58A22;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    .retail-rating-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      color: #F4A213;
+      margin-bottom: 8px;
+    }
+
+    .retail-rating-row span.count {
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    .express-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--navy);
+      font-style: italic;
+      margin-top: auto;
+      padding-top: 6px;
+    }
+
+    .express-badge span {
+      background: var(--gold);
+      color: var(--navy-dark);
+      padding: 1px 4px;
+      border-radius: 2px;
+      font-style: normal;
+    }
+
+    .retail-card-actions {
+      display: grid;
+      grid-template-columns: 1fr 40px;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .add-to-cart-retail-btn {
+      background: var(--navy);
+      color: #FFFFFF;
+      border: none;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .add-to-cart-retail-btn:hover {
+      background: var(--navy-light);
+    }
+
+    .wa-retail-btn {
+      background: #25D366;
+      color: #FFFFFF;
+      border: none;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .wa-retail-btn:hover {
+      background: #1EBE5D;
+    }
+
+    @media (max-width: 1080px) {
+      .grid-4-col { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 820px) {
+      .marketplace-container { grid-template-columns: 1fr; }
+      .filter-sidebar { display: none; }
+      .grid-4-col { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .grid-4-col { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <aside class="announce" aria-label="Announcement">
+    <span>DISCOVER LUXURY &amp; TIMELESS ELEGANCE WITH SALAMA</span>
+    <span>•</span>
+    <span>NATIONWIDE DELIVERY ACROSS NIGERIA</span>
+    <span>•</span>
+    <span>WHATSAPP ORDERS: <a href="https://wa.me/2348147709019" target="_blank" rel="noopener">+234 814 770 9019</a></span>
+  </aside>
+
+  <!-- Main Header & Navigation -->
+  <header>
+    <div class="nav-container">
+      <a class="brand" href="index.html" aria-label="SALAMA Fabrics &amp; Bedding Home">
+        <img src="assets/logo.svg" alt="SALAMA Logo" class="brand-logo-svg">
+        <div class="brand-text">
+          <span class="brand-name">SALAMA</span>
+          <span class="brand-tagline">Fabrics &amp; Bedding</span>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="navlinks" aria-label="Main Navigation">
+        <a href="index.html">Home</a>
+        <a href="shop.html" class="active">Shop All Products 🛍️</a>
+
+        <select class="nav-select-element" onchange="if(this.value){ window.location.href=this.value; this.selectedIndex=0; }">
+          <option value="" selected disabled>Explore Menu ▾</option>
+          <option value="index.html#bedding-partition">🛏️ Luxury Bedding</option>
+          <option value="index.html#fabrics-partition">🧵 Fine Fabrics &amp; Brocades</option>
+          <option value="index.html#about">📖 Our Story</option>
+          <option value="index.html#why-us">✨ Why Choose SALAMA</option>
+        </select>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="nav-actions">
+        <button type="button" class="icon-btn" onclick="openSearchDialog()" title="Search products" aria-label="Open search">
+          🔍
+        </button>
+        <button type="button" class="cart-btn" onclick="openCartDrawer()" aria-label="View shopping bag">
+          <span>🛍️ Bag</span>
+          <span class="cart-count-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Marketplace Content Area -->
+  <div class="shop-marketplace-wrapper">
+    <div class="marketplace-container">
+
+      <!-- Left Sidebar Filters -->
+      <aside class="filter-sidebar">
+        <div class="filter-group">
+          <h4 class="filter-title">Category</h4>
+          <div class="filter-checkbox-list">
+            <label class="filter-checkbox-item">
+              <input type="checkbox" value="all" class="cat-filter-cb" checked onclick="toggleCategoryFilter('all')">
+              <span>All Categories</span>
+            </label>
+            <label class="filter-checkbox-item">
+              <input type="checkbox" value="bedding" class="cat-filter-cb" onclick="toggleCategoryFilter('bedding')">
+              <span>Luxury Bedding</span>
+              <span class="count">(6)</span>
+            </label>
+            <label class="filter-checkbox-item">
+              <input type="checkbox" value="fabrics" class="cat-filter-cb" onclick="toggleCategoryFilter('fabrics')">
+              <span>Fine Fabrics &amp; Brocades</span>
+              <span class="count">(9)</span>
+            </label>
+            <label class="filter-checkbox-item">
+              <input type="checkbox" value="curtains" class="cat-filter-cb" onclick="toggleCategoryFilter('curtains')">
+              <span>Drapery &amp; Curtains</span>
+              <span class="count">(5)</span>
+            </label>
+            <label class="filter-checkbox-item">
+              <input type="checkbox" value="accessories" class="cat-filter-cb" onclick="toggleCategoryFilter('accessories')">
+              <span>Home Accents</span>
+              <span class="count">(4)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h4 class="filter-title">Price Filter (₦)</h4>
+          <div class="price-range-inputs">
+            <input type="number" id="min-price-input" placeholder="Min" min="0" onchange="renderMarketplaceGrid()">
+            <span>–</span>
+            <input type="number" id="max-price-input" placeholder="Max" min="0" onchange="renderMarketplaceGrid()">
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h4 class="filter-title">Discount %</h4>
+          <div class="filter-checkbox-list">
+            <label class="filter-checkbox-item">
+              <input type="radio" name="discount" value="0" checked onclick="renderMarketplaceGrid()">
+              <span>All Items</span>
+            </label>
+            <label class="filter-checkbox-item">
+              <input type="radio" name="discount" value="10" onclick="renderMarketplaceGrid()">
+              <span>10% off or more</span>
+            </label>
+            <label class="filter-checkbox-item">
+              <input type="radio" name="discount" value="20" onclick="renderMarketplaceGrid()">
+              <span>20% off or more</span>
+            </label>
+          </div>
+        </div>
+
+        <div style="margin-top: 20px;">
+          <button type="button" class="btn btn-outline" style="width:100%; padding:10px;" onclick="resetMarketplaceFilters()">
+            Reset All Filters
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Marketplace Grid Area -->
+      <main class="marketplace-main">
+        <div class="marketplace-top-bar">
+          <div class="marketplace-count">
+            Showing <strong id="marketplace-product-count">0</strong> luxury products found
+          </div>
+          <div class="sort-wrapper">
+            <label for="shop-sort-select">Sort by:</label>
+            <select id="shop-sort-select" class="sort-select" onchange="renderMarketplaceGrid()">
+              <option value="featured">Featured First</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+              <option value="name">Product Name (A-Z)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 4-Column Product Cards Grid -->
+        <div class="grid-4-col" id="marketplace-grid">
+          <!-- Rendered dynamically -->
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <!-- Shopping Bag Drawer -->
+  <div class="cart-backdrop" id="cart-backdrop"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping Bag">
+    <div class="cart-drawer-header">
+      <h3>Your Shopping Bag <span id="drawer-cart-count">(0)</span></h3>
+      <button type="button" class="close-cart-btn" onclick="closeCartDrawer()" aria-label="Close bag">✕</button>
+    </div>
+    <div class="cart-items-list" id="cart-items-list">
+      <!-- Items dynamically injected -->
+    </div>
+    <div class="cart-drawer-footer">
+      <div class="cart-subtotal-row">
+        <span>Subtotal:</span>
+        <strong id="cart-subtotal-val">₦0</strong>
+      </div>
+      <button type="button" class="btn btn-gold checkout-btn" onclick="openCheckoutModal()">
+        Proceed to Checkout
+      </button>
+    </div>
+  </aside>
+
+  <!-- Quick View Modal -->
+  <dialog id="quick-view-dialog" class="custom-dialog">
+    <div class="dialog-content">
+      <button type="button" class="dialog-close-btn" onclick="closeDialog('quick-view-dialog')">✕</button>
+      <div class="quick-view-grid">
+        <img src="" alt="" id="modal-img" class="quick-view-img">
+        <div class="quick-view-info">
+          <span class="tag" id="modal-cat">BEDDING</span>
+          <h3 id="modal-title">Product Name</h3>
+          <div class="price" id="modal-price">₦0</div>
+          <p id="modal-desc" style="font-size:0.9rem; margin: 12px 0; color:var(--muted);"></p>
+          
+          <div style="margin-bottom: 16px;">
+            <label style="font-size:0.82rem; font-weight:700;">Color Variant: <span id="selected-color-name"></span></label>
+            <div id="modal-colors" style="display:flex; gap:8px; margin-top:6px;"></div>
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <label style="font-size:0.82rem; font-weight:700;" for="modal-size">Select Size:</label>
+            <select id="modal-size" style="width:100%; padding:8px; margin-top:4px; border-radius:4px; border:1px solid var(--border);"></select>
+          </div>
+
+          <div style="display:flex; gap:12px; margin-top:20px;">
+            <button type="button" class="btn btn-gold" style="flex:1;" onclick="addModalItemToCart()">Add to Bag</button>
+            <button type="button" class="btn btn-whatsapp" onclick="orderModalItemWhatsApp()">Order via WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+  <!-- Checkout Dialog -->
+  <dialog id="checkout-dialog" class="custom-dialog">
+    <div class="dialog-content">
+      <button type="button" class="dialog-close-btn" onclick="closeDialog('checkout-dialog')">✕</button>
+      <h3>Complete Your Order</h3>
+      <form onsubmit="processCheckoutOrder(event)" style="display:flex; flex-direction:column; gap:12px; margin-top:16px;">
+        <input type="text" id="cust-name" required placeholder="Full Name" style="padding:10px; border:1px solid var(--border); border-radius:4px;">
+        <input type="email" id="cust-email" placeholder="Email Address (Optional)" style="padding:10px; border:1px solid var(--border); border-radius:4px;">
+        <input type="tel" id="cust-phone" required placeholder="WhatsApp Phone Number" style="padding:10px; border:1px solid var(--border); border-radius:4px;">
+        <input type="text" id="cust-address" required placeholder="Delivery Address" style="padding:10px; border:1px solid var(--border); border-radius:4px;">
+        <select id="cust-state" style="padding:10px; border:1px solid var(--border); border-radius:4px;">
+          <option value="Lagos State">Lagos State</option>
+          <option value="Abuja FCT">Abuja FCT</option>
+          <option value="Kano State">Kano State</option>
+          <option value="Rivers State">Rivers State (Port Harcourt)</option>
+          <option value="Other States">Other Nigerian State</option>
+        </select>
+        <textarea id="cust-notes" placeholder="Order notes (optional)" rows="2" style="padding:10px; border:1px solid var(--border); border-radius:4px;"></textarea>
+
+        <div id="checkout-summary-box" style="background:#FAF8F2; padding:12px; border-radius:4px; font-size:0.9rem;"></div>
+
+        <button type="submit" class="btn btn-gold" id="checkout-btn-text" style="width:100%;">Confirm &amp; Order via WhatsApp</button>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- Order Success Dialog -->
+  <dialog id="order-success-dialog" class="custom-dialog">
+    <div class="dialog-content" style="text-align:center;">
+      <div style="font-size:3rem;">✨</div>
+      <h2>Order Confirmed!</h2>
+      <p id="receipt-subtitle" style="font-size:0.9rem; color:var(--muted); margin: 8px 0;"></p>
+      <div style="background:#FAF8F2; padding:16px; border-radius:8px; text-align:left; font-size:0.88rem; margin:16px 0;">
+        <div><strong>Ref:</strong> <span id="receipt-ref"></span></div>
+        <div><strong>Customer:</strong> <span id="receipt-customer"></span></div>
+        <div><strong>Address:</strong> <span id="receipt-address"></span></div>
+        <div><strong>Amount:</strong> <span id="receipt-amount"></span></div>
+      </div>
+      <button type="button" id="receipt-whatsapp-btn" class="btn btn-whatsapp" style="width:100%;">
+        <span>💬 Send Receipt via WhatsApp</span>
+      </button>
+    </div>
+  </dialog>
+
+  <!-- Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/chatbot.js"></script>
+
+  <script>
+    // Marketplace Page Specific Script
+    let activeCatFilter = "all";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderMarketplaceGrid();
+
+      const searchInput = document.getElementById("shop-search-input");
+      if (searchInput) {
+        searchInput.addEventListener("input", () => {
+          renderMarketplaceGrid();
+        });
+      }
+    });
+
+    function toggleCategoryFilter(cat) {
+      activeCatFilter = cat;
+      const cbs = document.querySelectorAll(".cat-filter-cb");
+      cbs.forEach(cb => {
+        cb.checked = (cb.value === cat);
+      });
+      renderMarketplaceGrid();
+    }
+
+    function executeMarketplaceSearch() {
+      renderMarketplaceGrid();
+    }
+
+    function resetMarketplaceFilters() {
+      activeCatFilter = "all";
+      document.querySelectorAll(".cat-filter-cb").forEach(cb => cb.checked = (cb.value === 'all'));
+      document.getElementById("min-price-input").value = "";
+      document.getElementById("max-price-input").value = "";
+      document.getElementById("shop-search-input").value = "";
+      document.querySelectorAll("input[name='discount']")[0].checked = true;
+      document.getElementById("shop-sort-select").value = "featured";
+      renderMarketplaceGrid();
+    }
+
+    function renderMarketplaceGrid() {
+      const container = document.getElementById("marketplace-grid");
+      const countEl = document.getElementById("marketplace-product-count");
+      if (!container) return;
+
+      const source = typeof getMergedProducts === "function" ? getMergedProducts() : PRODUCTS;
+      let list = [...source];
+
+      // Category filter
+      if (activeCatFilter !== "all") {
+        list = list.filter(p => p.category === activeCatFilter);
+      }
+
+      // Search query
+      const searchInput = document.getElementById("shop-search-input");
+      if (searchInput && searchInput.value.trim()) {
+        const q = searchInput.value.toLowerCase().trim();
+        list = list.filter(p => 
+          p.name.toLowerCase().includes(q) ||
+          p.description.toLowerCase().includes(q) ||
+          p.categoryName.toLowerCase().includes(q)
+        );
+      }
+
+      // Price filter
+      const minP = parseFloat(document.getElementById("min-price-input")?.value);
+      const maxP = parseFloat(document.getElementById("max-price-input")?.value);
+      if (!isNaN(minP)) list = list.filter(p => p.price >= minP);
+      if (!isNaN(maxP)) list = list.filter(p => p.price <= maxP);
+
+      // Discount filter
+      const discountVal = parseInt(document.querySelector("input[name='discount']:checked")?.value || "0");
+      if (discountVal > 0) {
+        list = list.filter(p => {
+          if (!p.oldPrice) return false;
+          const pct = Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100);
+          return pct >= discountVal;
+        });
+      }
+
+      // Sort
+      const sortBy = document.getElementById("shop-sort-select")?.value || "featured";
+      if (sortBy === "price-low") list.sort((a,b) => a.price - b.price);
+      if (sortBy === "price-high") list.sort((a,b) => b.price - a.price);
+      if (sortBy === "rating") list.sort((a,b) => b.rating - a.rating);
+      if (sortBy === "name") list.sort((a,b) => a.name.localeCompare(b.name));
+
+      if (countEl) countEl.textContent = list.length;
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background:#FFF; border-radius:8px;">
+            <p style="font-size: 1.1rem; color: var(--navy); margin-bottom: 8px;">No products match your filters</p>
+            <p style="color: var(--muted); font-size: 0.9rem;">Try adjusting your price range or search terms.</p>
+            <button type="button" class="btn btn-gold" style="margin-top: 16px;" onclick="resetMarketplaceFilters()">Reset Filters</button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = list.map(p => {
+        const discountPct = p.oldPrice ? Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100) : 0;
+        const discountPillHtml = discountPct > 0 ? `<span class="discount-pill">-${discountPct}%</span>` : '';
+        const oldPriceHtml = p.oldPrice ? `<span class="retail-old-price">${formatNaira(p.oldPrice)}</span>` : '';
+        const starsHtml = '★'.repeat(Math.round(p.rating)) + '☆'.repeat(5 - Math.round(p.rating));
+
+        return `
+          <article class="retail-prod-card" data-id="${p.id}">
+            <div class="retail-card-media">
+              <span class="official-badge">${p.badge || 'OFFICIAL STORE'}</span>
+              <button type="button" class="wishlist-heart-btn" title="Add to Wishlist" onclick="showToast('Added ${p.name} to Wishlist!')">♡</button>
+              <img src="${p.image}" alt="${p.name}" class="retail-card-img" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_IMAGE}';">
+            </div>
+
+            <div class="retail-card-body">
+              <h3 class="retail-prod-title" onclick="openQuickView('${p.id}')" title="${p.name}">${p.name}</h3>
+              
+              <div class="retail-price-row">
+                <span class="retail-main-price">${formatNaira(p.price)}</span>
+                ${oldPriceHtml}
+                ${discountPillHtml}
+              </div>
+
+              <div class="retail-rating-row">
+                <span>${starsHtml}</span>
+                <span class="count">(${p.reviewsCount})</span>
+              </div>
+
+              <div class="express-badge">
+                <span>SALAMA</span> EXPRESS
+              </div>
+
+              <div class="retail-card-actions">
+                <button type="button" class="add-to-cart-retail-btn" onclick="quickAddToCart('${p.id}')">Add To Cart</button>
+                <button type="button" class="wa-retail-btn" onclick="orderDirectWhatsApp('${p.id}')" title="Inquire on WhatsApp">💬</button>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+  </script>
+</body>
+</html>

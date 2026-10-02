@@ -1,0 +1,49 @@
+{
+  "name": "SALAMA Fabrics & Bedding",
+  "short_name": "SALAMA",
+  "description": "Luxury 1000TC Egyptian Cotton Bedding, Royal Damask Brocades, and Tailored Velvet Drapery across Nigeria.",
+  "id": "com.salamafabrics.pwa",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FFFFFF",
+  "theme_color": "#071D40",
+  "categories": ["shopping", "lifestyle"],
+  "icons": [
+    {
+      "src": "assets/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Explore Collection",
+      "short_name": "Shop",
+      "description": "Browse signature fabrics, bedding, and curtains",
+      "url": "./#shop",
+      "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "WhatsApp Concierge",
+      "short_name": "WhatsApp",
+      "description": "Chat directly with our design consultants",
+      "url": "https://wa.me/2348147709019",
+      "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

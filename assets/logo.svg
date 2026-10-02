@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5C77A"/>
+      <stop offset="50%" stop-color="#B58A22"/>
+      <stop offset="100%" stop-color="#8C6514"/>
+    </linearGradient>
+    <linearGradient id="navyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E2E5E"/>
+      <stop offset="100%" stop-color="#041024"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Base -->
+  <circle cx="60" cy="60" r="56" fill="url(#navyGrad)" stroke="url(#goldGrad)" stroke-width="2.5"/>
+  <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(212, 175, 55, 0.4)" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- Fabric Weave Texture Motif -->
+  <path d="M38 46 C48 34, 72 34, 82 46 C72 58, 48 58, 38 70 C48 82, 72 82, 82 70" 
+        fill="none" stroke="url(#goldGrad)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <path d="M48 38 C58 48, 62 72, 72 82" 
+        fill="none" stroke="rgba(247, 245, 236, 0.4)" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Center Monogram S -->
+  <text x="60" y="68" font-family="'Playfair Display', Georgia, serif" font-size="34" font-weight="bold" 
+        fill="#FAF8F2" text-anchor="middle" dominant-baseline="central">S</text>
+
+  <!-- Little Stars/Diamonds -->
+  <polygon points="60,20 62,24 66,24 63,27 64,31 60,28 56,31 57,27 54,24 58,24" fill="url(#goldGrad)"/>
+</svg>

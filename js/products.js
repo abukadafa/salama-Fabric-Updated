@@ -664,7 +664,7 @@ function getMergedHeroSlides() {
     {
       image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1600&q=85",
       title: "Where Comfort Meets<br><span class=\"gold\">Timeless Elegance</span>",
-      subtitle: "Transform your sanctuary with 1000TC Egyptian cotton bedding, royal Guinea brocades, and opulent velvet draperies curated for refined living."
+      subtitle: "Transform your sanctuary with 1000TC Egyptian cotton bedding, royal Guinea brocades, and opulent velvet draperies curated for refined living. Beyond the bedroom, Salama brings you a world of quality goods and trusted services, all delivered right to your door."
     },
     {
       image: "https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&w=1600&q=85",
